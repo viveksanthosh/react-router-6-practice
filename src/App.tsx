@@ -8,6 +8,9 @@ import "./App.css";
 function App() {
   return (
     <>
+      <Routes>
+        <Route path="/about" element={<p>Parent</p>}></Route>
+      </Routes>
       <p>App</p>
       <Routes>
         <Route path="/" Component={Home} />
