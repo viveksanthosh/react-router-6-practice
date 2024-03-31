@@ -4,8 +4,11 @@ import Other from "./Other";
 import AboutLayout from "./AboutLayout";
 import "./App.css";
 import { Suspense, lazy } from "react";
+import delay from "delay";
 
-const About = lazy(() => import("./About"));
+const About = lazy(() => {
+  return delay(1000).then(() => import("./About"));
+});
 
 function App() {
   return (
