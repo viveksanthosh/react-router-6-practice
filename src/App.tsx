@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useRoutes } from "react-router-dom";
 import Home from "./Home";
 import Other from "./Other";
 import AboutLayout from "./AboutLayout";
@@ -11,12 +11,19 @@ const About = lazy(() => {
 });
 
 function App() {
+  const element = useRoutes([
+    {
+      path: "/other",
+      element: <Other />,
+    },
+  ]);
   return (
     <>
       <Routes>
         <Route path="/about" element={<p>Parent</p>}></Route>
       </Routes>
       <p>App</p>
+      {element}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" Component={Home} />
