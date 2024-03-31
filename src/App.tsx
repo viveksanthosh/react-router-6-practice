@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import About from "./About";
 import Other from "./Other";
 import AboutLayout from "./AboutLayout";
 import "./App.css";
+import { Suspense, lazy } from "react";
+
+const About = lazy(() => import("./About"));
 
 function App() {
   return (
@@ -12,15 +14,19 @@ function App() {
         <Route path="/about" element={<p>Parent</p>}></Route>
       </Routes>
       <p>App</p>
-      <Routes>
-        <Route path="/" Component={Home} />
-        <Route Component={AboutLayout} path="/about">
-          <Route index Component={About} />
-          <Route path="other" Component={Other} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route Component={AboutLayout} path="/about">
+            <Route index Component={About} />
+            <Route path="other" Component={Other} />
+          </Route>
+        </Routes>
+      </Suspense>
     </>
   );
 }
+
+const Loader = () => <p>Loading</p>;
 
 export default App;
