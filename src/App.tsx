@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/about" Component={About} />
+        <Route path="/about/:id" Component={About} />
       </Routes>
     </>
   );
