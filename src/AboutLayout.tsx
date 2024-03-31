@@ -8,7 +8,7 @@ export default function About(props: any) {
   return (
     <>
       <h1>About Layout</h1>
-      <Outlet></Outlet>
+      <Outlet context={{ hey: "uu" }}></Outlet>
     </>
   );
 }

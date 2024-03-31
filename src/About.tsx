@@ -1,10 +1,11 @@
 // generate placeholder jsx
 
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 export default function About() {
+  const outlet = useOutletContext();
   const params = useParams();
-  console.log({ params });
+  console.log({ outlet });
 
-  return <h1>About</h1>;
+  return <h1>{(outlet as any)?.hey}</h1>;
 }
